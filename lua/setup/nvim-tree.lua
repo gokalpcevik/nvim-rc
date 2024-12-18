@@ -40,7 +40,7 @@ local function toggle_nvim_tree()
   api.tree.toggle()
 end
 
-vim.keymap.set("n", "<C-h>", function()
+vim.keymap.set("n", "<Leader>e", function()
   toggle_nvim_tree()
 end)
 

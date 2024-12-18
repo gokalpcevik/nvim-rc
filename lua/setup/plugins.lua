@@ -49,7 +49,7 @@ return {
     priority = 1000,
     lazy = false
   },
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "catppuccin/nvim",             name = "catppuccin", priority = 1000 },
   {
     "rktjmp/lush.nvim",
     lazy = false
@@ -196,6 +196,17 @@ return {
   },
 
   {
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!).
+    build = "make install_jsregexp",
+    config = function()
+      require('setup.luasnip')
+    end
+  },
+
+  {
     'hrsh7th/nvim-cmp',
     event = { "InsertEnter", "WinEnter", "BufEnter" },
     dependencies = {
@@ -217,6 +228,8 @@ return {
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-calc",
+        "saadparwaiz1/cmp_luasnip",
         "L3MON4D3/LuaSnip",
         "onsails/lspkind.nvim"
       },
@@ -231,7 +244,7 @@ return {
 
   {
     "nvim-neorg/neorg",
-    lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+    lazy = false,  -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
     version = "*", -- Pin Neorg to the latest stable release
     config = true,
   },

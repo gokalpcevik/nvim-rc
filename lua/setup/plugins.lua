@@ -25,6 +25,11 @@ return {
     lazy = false,
     priority = 1000,
   },
+  {
+    "StarryLeo/starry-vim-colorschemes",
+    priority = 1000,
+    lazy = false
+  },
   -- Kanagawa
   {
     "rebelot/kanagawa.nvim",
@@ -32,14 +37,77 @@ return {
     lazy = false
   },
   {
-    "rose-pine/neovim",
-    name = "rose-pine",
+    "yorumicolors/yorumi.nvim",
     priority = 1000,
     lazy = false
   },
-
+  {
+    "brunociccarino/nekonight",
+    priority = 1000,
+    lazy = false
+  },
+  {
+    "mofiqul/dracula.nvim",
+    priority = 1000,
+    lazy = false
+  },
+  {
+    "ricardoraposo/nightwolf.nvim",
+    priority = 1000,
+    lazy = false
+  },
+  {
+    "bluz71/vim-moonfly-colors",
+    priority = 1000,
+    lazy = false
+  },
+  {
+    "folke/tokyonight.nvim",
+    priority = 1000,
+    lazy = false
+  },
+  {
+    "fcpg/vim-fahrenheit",
+    priority = 1000,
+    lazy = false,
+  },
+  {
+    "sho-87/kanagawa-paper.nvim",
+    priority = 1000,
+    lazy = false,
+  },
+  {
+    "jpo/vim-railscasts-theme",
+    priority = 1000,
+    lazy = false,
+  },
   {
     "whizikxd/naysayer-colors.nvim",
+    priority = 1000,
+    lazy = false,
+  },
+  {
+    "rigellute/rigel",
+    priority = 1000,
+    lazy = false,
+  },
+  {
+    "ayu-theme/ayu-vim",
+    priority = 1000,
+    lazy = false,
+  },
+  {
+    "nyoom-engineering/oxocarbon.nvim",
+    priority = 1000,
+    lazy = false,
+  },
+  {
+    "nlknguyen/papercolor-theme",
+    priority = 1000,
+    lazy = false,
+  },
+  {
+    "diegoulloao/neofusion.nvim",
     priority = 1000,
     lazy = false,
   },
@@ -49,16 +117,30 @@ return {
     priority = 1000,
     lazy = false
   },
-  { "catppuccin/nvim",             name = "catppuccin", priority = 1000 },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000
+  },
   {
     "rktjmp/lush.nvim",
     lazy = false
   },
-
+  --  {
+  --    "kevinhwang91/nvim-ufo",
+  --    lazy = false,
+  --    priority = 1000,
+  --    dependencies = { "kevinhwang91/promise-async" },
+  --    config = function() require('setup.fold') end
+  --  },
   -- which-key
   {
     "folke/which-key.nvim",
     lazy = true
+  },
+  {
+    "zadirion/Unreal.nvim",
+    dependencies = { "tpope/vim-dispatch" }
   },
 
   -- Startup time profiling
@@ -196,17 +278,6 @@ return {
   },
 
   {
-    "L3MON4D3/LuaSnip",
-    -- follow latest release.
-    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-    -- install jsregexp (optional!).
-    build = "make install_jsregexp",
-    config = function()
-      require('setup.luasnip')
-    end
-  },
-
-  {
     'hrsh7th/nvim-cmp',
     event = { "InsertEnter", "WinEnter", "BufEnter" },
     dependencies = {
@@ -227,10 +298,9 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-calc",
-        "saadparwaiz1/cmp_luasnip",
-        "L3MON4D3/LuaSnip",
         "onsails/lspkind.nvim"
       },
     },

@@ -50,7 +50,11 @@ return {
           nvim_lsp = "[LSP]",
           path = "[Path]",
           buffer = "[Buffer]",
-          luasnip = "[Snippet]"
+          -- The native snippets will come through the LSP, so we don't need a separate snippet label
+          -- We can add any other sources you might use
+          calc = "[Calc]",
+          spell = "[Spell]",
+          treesitter = "[Tree]"
         })[entry.source.name]
         return vim_item
       end
@@ -58,8 +62,9 @@ return {
   },
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end
+      print("Expanding snippet:", vim.inspect(args))
+      vim.snippet.expand(args.body)
+    end,
   },
   window = {
     completion = {
@@ -80,12 +85,10 @@ return {
   },
   mapping = cmp.mapping.preset.insert({
     ['<CR>'] = cmp.mapping.confirm({
-      select = false,
+      select = true,
       behavior = cmp.ConfirmBehavior.Replace
     }),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
     ["<Tab>"] = cmp.mapping(function(fallback)
@@ -104,13 +107,13 @@ return {
     end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp',   priority = 1000 },
-    { name = 'treesitter', priority = 750 }, -- Add treesitter completion
-    { name = 'luasnip',    priority = 750 },
-    { name = 'path',       priority = 500 },
-    { name = 'buffer',     priority = 250,    keyword_length = 3 },
-    { name = 'calc' },                           -- Adds inline calculation completion
-    { name = 'spell',      keyword_length = 4 }, -- Helps with variable naming
+    { name = 'nvim_lsp',                priority = 1000 },
+    { name = 'treesitter',              priority = 750 }, -- Add treesitter completion
+    { name = 'nvim_lsp_signature_help' },
+    { name = 'path',                    priority = 500 },
+    { name = 'buffer',                  priority = 250,    keyword_length = 3 },
+    { name = 'calc' },                                       -- Adds inline calculation completion
+    { name = 'spell',                   keyword_length = 4 }, -- Helps with variable naming
   }),
   experimental = {
     ghost_text = true -- Shows virtual text preview
@@ -133,5 +136,3 @@ return {
     },
   },
 }
-
-

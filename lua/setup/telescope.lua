@@ -34,7 +34,7 @@ telescope.setup({
       "%.csv"
     },
 
-    sorting_strategy = "ascending",
+    --sorting_strategy = "ascending",
 
     mappings = {
       i = {
